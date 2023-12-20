@@ -24,8 +24,10 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-shell")
 	implementation("com.github.derjust:spring-data-dynamodb:5.1.0")
 	implementation("com.amazonaws:aws-java-sdk-dynamodb:1.12.504")
+	implementation("org.apache.commons:commons-csv:1.8")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

@@ -5,15 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SomeAsyncServiceTestingTest {
+class SomeAsyncServiceTest {
 
     @Autowired
-    SomeAsyncServiceTesting someAsyncServiceTesting;
+    DataLoadingService dataLoadingService;
 
     @Test
-    void loadAllMyRecords() {
+    void loadAllMyRecords() throws InterruptedException {
         System.out.println("Start - invoking the load records method " + Thread.currentThread().getName());
-        someAsyncServiceTesting.loadAllMyRecords();
+        dataLoadingService.loadAllMyRecords();
         System.out.println("End - finished invoking the load records method " + Thread.currentThread().getName());
     }
 }

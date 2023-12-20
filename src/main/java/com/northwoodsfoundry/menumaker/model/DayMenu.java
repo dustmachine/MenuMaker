@@ -5,10 +5,11 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIgnore;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-@DynamoDBTable(tableName = "my-dynamodb-table-name")
+@DynamoDBTable(tableName = "tower-menu-northwoods")
 public class DayMenu {
 
     @DynamoDBHashKey
@@ -19,19 +20,18 @@ public class DayMenu {
      * A day's menu is a map:    { "lunch":"food,soup-or-salad,desserts", "dinner":"food,soup-or-salad,desserts" }
      */
     @DynamoDBAttribute
-    private Map<String, String> menu;
+    private Map<String, String> menu = new HashMap<>(1);
 
     public DayMenu(String date, MealPlan mealPlan) {
         this();
         this.id = date;
         this.menu = Map.of(
-                "lunch", mealPlan.lunch(),
-                "dinner", mealPlan.dinner()
+                "lunch", mealPlan.lunch().trim() + ", soup or salad, and desserts",
+                "dinner", mealPlan.dinner().trim() + ", soup or salad, and desserts"
         );
     }
 
-    public DayMenu() {
-    }
+    public DayMenu() { }
 
     public String getId() {
         return id;
